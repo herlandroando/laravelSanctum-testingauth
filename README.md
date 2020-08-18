@@ -1,2 +1,0 @@
-# laravelSanctum-testingauth
-Still development
