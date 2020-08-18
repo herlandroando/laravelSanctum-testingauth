@@ -1,61 +1,53 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## Laravel Sanctum with ReactJS
+This is an example to create SPA authentication using the *Laravel Sanctum* with the front-end framework used is *ReactJS*. This repos just for practice, not for production method because I don't know whether my method is proven to be very safe or not. I also just learned React JS and Laravel here recently. So if something is not in accordance with the existing rules, I am sorry.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Requirements for this Repos
 
-## About Laravel
+ 1. Laravel UI for generate basic scaffolding React JS and Auth.
+ 2. Laravel Sanctum.
+ 3. React Reveal (For testing only, you can remove the component at App.js and uninstall it).
+ 4. React Redux.
+ 5. Redux.
+ 6. React Toastify (For testing only, you can uninstall it).
+ 7. Node JS
+## Important
+This is just for one server with back-end and front-end. Don't forget to command at the project folder:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    npm install
+and
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    npm run dev
+## Preparation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Laravel is already installed (For Mac it is recommended to install Laravel Valet for easy configure and many feature you will like!)  
+2. The Node JS has been installed  
+3. Prepare a new laravel project and set the db settings in .env  
+4. Execute command: 
 
-## Learning Laravel
+	`composer require laravel / ui` 
+	`php artisan ui react --auth`
+	`composer require laravel / sanctum`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. .env settings that need to be added
+ 
+	`SESSION_DOMAIN = .sikbantul.test //(Server domain name)  `
+	`SESSION_DRIVER = cookie  `
+	`SANCTUM_STATEFUL_DOMAINS = sikbantul.test //(SPA domain name)`
+6. In app / http / kernel.php add in the array of api above the throttle  
+`EnsureFrontendRequestsAreStateful :: class,`
+7. In the sanctum.php config section in the SANCTUM_STATEFUL_DOMAINS section add something like no.6 sikbantul.test to take care when it does happen unauthicated continuously.
+8.  In the cors.php config, configure something like this:  
+` 'paths' => [  
+'api/*',  
+'/login',  
+'/logout',  
+'/sanctum/csrf-cookie'  
+],  `
+and  
+`supports_credentials' => true,`
+9. Add the configuration below window.axios ... in bootstrap.js   `axios.defaults.withCredentials = true;`
+10. Create a LoginController  
+(Example: https://github.com/herlandroando/laravelSanctum-testingauth/blob/master/app/Http/Controllers/Api/LoginController.php) 
+11. Set the ReactJS rendering on a single blade page by creating a file app.blade.php  
+(Example: https://github.com/herlandroando/laravelSanctum-testingauth/blob/master/resources/views/app.blade.php)
+12. For the rest front-end, see https://github.com/herlandroando/laravelSanctum-testingauth/tree/master/resources/js
