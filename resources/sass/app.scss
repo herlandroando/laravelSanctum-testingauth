@@ -1,0 +1,20 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.loginbg1 {
+    background: url('/images/loginbg1.jpg');
+}
+
+.copyrightbg {
+    position: absolute;
+    bottom: 1vh;
+    right: 1vw;
+    font-style: italic;
+    color: white;
+}
