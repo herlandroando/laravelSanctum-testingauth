@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import SVGLoading from "../../../public/img/Spinner-1s-220px.svg";
-// import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types's;
 
 class Loading extends Component {
     constructor(props) {
