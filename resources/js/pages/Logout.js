@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import { toast } from 'react-toastify';
 
 class Logout extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class Logout extends Component {
                 type:"LOGOUT_USER",
                 payload: "",
             })
+            toast.success("You has been log out!")
         }).catch(e=>{
             console.log(e)
         })
@@ -20,7 +22,7 @@ class Logout extends Component {
 
     render(){
         return(
-            <div>
+            <div className="container">
                 <button type="button" className="btn btn-primary" onClick={this.handleClick}>Logout</button>
             </div>
         )

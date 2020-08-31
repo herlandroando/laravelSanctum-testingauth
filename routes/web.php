@@ -20,9 +20,14 @@ Route::get('/', function () {
 Route::get('/app', function () {
     return view('app');
 });
-Route::get('/app/{path?}', function () {
+// Route::get('/app/{path?}', function () {
+//     return view('app');
+// });
+Route::get('app/{path?}', function () {
     return view('app');
-});
+})->where('path', '.*');
+
+
 
 // Auth::routes();
 

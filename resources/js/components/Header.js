@@ -3,14 +3,17 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
     return (
-        <nav>
-            <NavLink exact activeClassName="active" to="/app">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <NavLink exact activeClassName="active" className="nav-link" to="/app">
                 Dashboard
             </NavLink>
-            <NavLink activeClassName="active" to="/app/population">
-                Population
+            <NavLink activeClassName="active" className="nav-link" to="/app/add/population">
+                Add Population
              </NavLink>
-            <NavLink activeClassName="active" to="/app/logout">
+             <NavLink activeClassName="active" className="nav-link" to="/app/show/population">
+                Show Population
+             </NavLink>
+            <NavLink activeClassName="active" className="nav-link" to="/app/logout">
                 Logout
             </NavLink>
         </nav>

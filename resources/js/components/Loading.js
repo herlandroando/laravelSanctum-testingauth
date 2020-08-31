@@ -40,7 +40,7 @@ class Loading extends Component {
 
     render() {
         const sl = {
-            width: "100%", height: "100%", backgroundColor: "white", overflow: "visible", position: "fixed", top: 0, left: 0, zIndex: 10000,
+            width: "100vw", height: "100vh", backgroundColor: "white", overflow: "visible", position: "fixed", top: 0, left: 0, zIndex: 10000,
         }
         return (
             <div className="d-flex justify-content-center align-items-center text-center" style={ sl }>

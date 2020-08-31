@@ -7,6 +7,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import '~react-toastify/scss/main.scss';
+
+@import '~react-datepicker/src/stylesheets/datepicker.scss';
+
 .loginbg1 {
     background: url('/images/loginbg1.jpg');
 }
